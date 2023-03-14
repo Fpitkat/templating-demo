@@ -1,10 +1,15 @@
 const express = require('express')
 const path = require('path')
 const app = express()
+const redditData = require('./data.json')
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 // sets ejs as the default templating engine
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, '/views'))
+
+
 
 app.get('/', (req, res) => {
   res.render('home.ejs')
@@ -35,9 +40,15 @@ app.get('/rand', (req, res) => {
 
 app.get('/r/:subreddit', (req, res) => {
   const { subreddit } = req.params
-  res.render('subreddit.ejs', { subreddit })
+  const data = redditData[subreddit.toLowerCase()]
+  if (data) {
+    res.render('subreddit.ejs', { ...data })
+  } else {
+    res.render('notfound.ejs', { subreddit })
+  }
+  
 })
 
-app.listen(3000, () => {
+app.listen(9000, () => {
   console.log('Listening on Port 3000')
 })

@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible"
-        content="IE=edge">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>Random</title>
-</head>
-
-<body>
+<%- include('partials/head')%>
+<%- include('partials/nav')%>
   <h1>Your Random Number is <%=num%>
       <!-- CONDITIONAL STATEMENT USING EJS -->
       <%if(num%2===0){%>
@@ -21,6 +11,4 @@
             <!-- CONDITIONAL STATEMENT USING EJS -->
             <h2>That is an <%=num%2===0?"even":"odd"%> number</h2>
   </h1>
-</body>
-
-</html>
+<%- include('partials/footer')%>

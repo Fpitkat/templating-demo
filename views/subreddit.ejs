@@ -1,19 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+    <%- include('partials/head')%>
+    <%- include('partials/nav')%>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible"
-        content="IE=edge">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-  <title>
-    <%=subreddit%>
-  </title>
-</head>
-<h1>Browsing the <%=subreddit%> subreddit </h1>
+    <div class="container">
+      <h1>Browsing the <%=name%> subreddit</h1>
+      <h2><%= description %></h2>
+      <p><%= subscribers %> Total Subscribers</p>
+      <hr />
+      <% for(let post of posts){ %>
+      <article class="p-3">
+        <p><%= post.title %> - <strong><%= post.author %></strong></p>
+        <% if(post.img){%>
+        <img class="img-fluid"
+          src="<%= post.img %>"
+          alt="<%= post.title %>" />
+        <%}%>
+      </article>
+      <%}%>
+    </div>
 
-<body>
-</body>
-
-</html>
+ <%- include('partials/footer')%>
